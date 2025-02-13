@@ -31,7 +31,7 @@ public class Menu {
 			System.out.println("*************************************************");
 			System.out.println("Entre com a opção desejada: ");
 			
-			opcao = sc.nextInt();
+			opcao = verificaInteiro(sc);
 			
 			if (opcao==9) {
 				System.out.println("\nBanco do Brazil com Z - O seu futuro começa aqui.");
@@ -72,12 +72,32 @@ public class Menu {
 		}
 	}
 
-	// Função que mostra as informações do Banco e desenvolvedor.
+	/**
+	* Função que exibe as informações a respeito do desenvolvedor do projeto.
+	*/
 	public static void sobre() {
 		System.out.println("\n*********************************************************");
 		System.out.println("Projeto Desenvolvido por: ");
 		System.out.println("Laura Azevedo - lauraa@genstudents.org / azevedolaura02@gmail.com");
 		System.out.println("github.com/laura-azevedo");
 		System.out.println("*********************************************************");
+	}
+	
+	/**
+	 * Função que verifica se o valor digitado pelo usuário é um número ou não.
+	 * @param
+	 * @return Caso seja um valor válido, retorna a opção selecionada pelo usuário. 
+	 * Do contrário, exibe a mensagem de entrada inválida. 
+	 */
+	private static int verificaInteiro(Scanner scanner) {
+	    while (true) {
+	        if (scanner.hasNextInt()) {
+	        	int opcao = scanner.nextInt();
+	            scanner.nextLine();
+	            return opcao;
+	        }
+	        System.out.println("Entrada inválida. Digite um número válido entre as opções do menu.");
+	        scanner.nextLine();
+	    }
 	}
 }
