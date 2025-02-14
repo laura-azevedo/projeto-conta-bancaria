@@ -56,6 +56,10 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
+	/**Realiza um saque na conta se houver saldo suficiente.
+	 * @param valor - quantia a ser sacada
+	 * @return true se o saque for bem sucedido e false se o saldo for insuficiente.
+	 */
 	public boolean sacar(float valor) {
 		if(this.getSaldo() < valor) {
 			System.out.println("\nO saldo é insuficiente!");
@@ -69,6 +73,7 @@ public class Conta {
 		this.setSaldo(this.getSaldo()+valor);
 	}
 	
+	/**Exibe no console os dados da conta (número, agência, tipo, titular e saldo).*/
 	public void visualizar() {
 		String tipo = "";
 		
