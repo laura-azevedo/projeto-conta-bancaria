@@ -11,20 +11,20 @@ public class Menu {
 	public static void main(String[] args) {
 
 		// Instância Conta Corrente
-		ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "José da Silva", 0.0f, 1000.0f);
-		cc1.visualizar();
-		cc1.sacar(12000.0f);
-		cc1.visualizar();
-		cc1.depositar(5000.0f);
-		cc1.visualizar();
+		//ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "José da Silva", 0.0f, 1000.0f);
+		//cc1.visualizar();
+		//cc1.sacar(12000.0f);
+		//cc1.visualizar();
+		//cc1.depositar(5000.0f);
+		//cc1.visualizar();
 		
 		//Instância Conta Poupança
-		ContaPoupanca cp1 = new ContaPoupanca(2, 123, 2, "Maria dos Santos", 100000.0f, 15);
-		cp1.visualizar();
-		cp1.sacar(1000.0f);
-		cp1.visualizar();
-		cp1.depositar(5000.0f);
-		cp1.visualizar();
+		//ContaPoupanca cp1 = new ContaPoupanca(2, 123, 2, "Maria dos Santos", 100000.0f, 15);
+		//cp1.visualizar();
+		//cp1.sacar(1000.0f);
+		//cp1.visualizar();
+		//cp1.depositar(5000.0f);
+		//cp1.visualizar();
 	
 		Scanner sc = new Scanner(System.in);
 		
@@ -105,7 +105,7 @@ public class Menu {
 	
 	/**
 	 * Função que verifica se o valor digitado pelo usuário é um número ou não.
-	 * @param
+	 * @param scanner: objeto scanner para ler a entrada do usuário
 	 * @return Caso seja um valor válido, retorna a opção selecionada pelo usuário. 
 	 * Do contrário, exibe a mensagem de entrada inválida. 
 	 */
@@ -118,6 +118,26 @@ public class Menu {
 	        }
 	        System.out.println("Entrada inválida. Digite um número válido entre as opções do menu.");
 	        scanner.nextLine();
+	    }
+	}
+	
+	//(Ainda não foi usada porque o switch só retorna system.out.println por enquanto)
+	/**Função que verifica se o valor digitado pelo usuário é um float positivo.
+	 *@param scanner: O objeto scanner para ler a entrada do usuário
+	 *@return se valor for float e > 0, retorna o valor digitado;
+	 *do contrário, é solicitada novamente a entrada do usuário.
+	 */
+	private static float verificaFloat(Scanner scanner) {
+		while (true) {
+	        if (!scanner.hasNextFloat() || (scanner.nextFloat() <= 0)) {
+	            System.out.println("Sua entrada é inválida. Digite um valor positivo.");
+	            scanner.nextLine();
+	            continue;
+	        }
+	        
+	        float valor = scanner.nextFloat();
+	        scanner.nextLine();
+	        return valor;
 	    }
 	}
 }
