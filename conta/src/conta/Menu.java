@@ -1,6 +1,9 @@
 package conta;
 
 import java.util.Scanner;
+import java.io.IOException;
+import java.util.InputMismatchException;
+
 import conta.util.Cores;
 import conta.model.Conta;
 import conta.model.ContaCorrente;
@@ -11,21 +14,21 @@ public class Menu {
 	public static void main(String[] args) {
 
 		// Instância Conta Corrente
-		//ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "José da Silva", 0.0f, 1000.0f);
-		//cc1.visualizar();
-		//cc1.sacar(12000.0f);
-		//cc1.visualizar();
-		//cc1.depositar(5000.0f);
-		//cc1.visualizar();
+		ContaCorrente cc1 = new ContaCorrente(1, 123, 1, "José da Silva", 0.0f, 1000.0f);
+		cc1.visualizar();
+		cc1.sacar(12000.0f);
+		cc1.visualizar();
+		cc1.depositar(5000.0f);
+		cc1.visualizar();
 		
 		//Instância Conta Poupança
-		//ContaPoupanca cp1 = new ContaPoupanca(2, 123, 2, "Maria dos Santos", 100000.0f, 15);
-		//cp1.visualizar();
-		//cp1.sacar(1000.0f);
-		//cp1.visualizar();
-		//cp1.depositar(5000.0f);
-		//cp1.visualizar();
-	
+		ContaPoupanca cp1 = new ContaPoupanca(2, 123, 2, "Maria dos Santos", 100000.0f, 15);
+		cp1.visualizar();
+		cp1.sacar(1000.0f);
+		cp1.visualizar();
+		cp1.depositar(5000.0f);
+		cp1.visualizar();
+		
 		Scanner sc = new Scanner(System.in);
 		
 		int opcao;
@@ -51,7 +54,14 @@ public class Menu {
 			System.out.println("*************************************************");
 			System.out.println("Entre com a opção desejada: " + Cores.TEXT_RESET);
 			
-			opcao = verificaInteiro(sc);
+			
+			try {
+				opcao = sc.nextInt();
+			} catch(InputMismatchException e) {
+				System.out.println("\nDigite valores inteiros!"); 
+				sc.nextLine(); 
+				opcao=0;
+			}
 			
 			if (opcao==9) {
 				System.out.println(Cores.TEXT_WHITE_BOLD+"\nBanco do Brazil com Z - O seu futuro começa aqui.");
@@ -63,30 +73,39 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println(Cores.TEXT_WHITE+"Criar Conta\n\n");
+				keyPress();
 				break;
 			case 2:
 				System.out.println(Cores.TEXT_WHITE+"Listar todas as Contas\n\n");
+				keyPress();
 				break;
 			case 3:
 				System.out.println(Cores.TEXT_WHITE+"Consultar dados da Conta - por número\n\n");
+				keyPress();
 				break;
 			case 4:
 				System.out.println(Cores.TEXT_WHITE+"Atualizar dados da Conta\n\n");
+				keyPress();
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_WHITE+"Apagar a Conta\n\n");
+				keyPress();
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_WHITE+"Saque\n\n");
+				keyPress();
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_WHITE+"Depósito\n\n");
+				keyPress();
 				break;
 			case 8:
 				System.out.println(Cores.TEXT_WHITE+"Transferência entre Contas\n\n");
+				keyPress();
 				break;
 			default:
 				System.out.println(Cores.TEXT_RED_BOLD +"\nOpção Inválida!\n"+ Cores.TEXT_RESET);
+				keyPress();
 				break;
 			}
 		}
@@ -103,41 +122,12 @@ public class Menu {
 		System.out.println("*********************************************************");
 	}
 	
-	/**
-	 * Função que verifica se o valor digitado pelo usuário é um número ou não.
-	 * @param scanner: objeto scanner para ler a entrada do usuário
-	 * @return Caso seja um valor válido, retorna a opção selecionada pelo usuário. 
-	 * Do contrário, exibe a mensagem de entrada inválida. 
-	 */
-	private static int verificaInteiro(Scanner scanner) {
-	    while (true) {
-	        if (scanner.hasNextInt()) {
-	        	int opcao = scanner.nextInt();
-	            scanner.nextLine();
-	            return opcao;
-	        }
-	        System.out.println("Entrada inválida. Digite um número válido entre as opções do menu.");
-	        scanner.nextLine();
-	    }
-	}
-	
-	//(Ainda não foi usada porque o switch só retorna system.out.println por enquanto)
-	/**Função que verifica se o valor digitado pelo usuário é um float positivo.
-	 *@param scanner: O objeto scanner para ler a entrada do usuário
-	 *@return se valor for float e > 0, retorna o valor digitado;
-	 *do contrário, é solicitada novamente a entrada do usuário.
-	 */
-	private static float verificaFloat(Scanner scanner) {
-		while (true) {
-	        if (!scanner.hasNextFloat() || (scanner.nextFloat() <= 0)) {
-	            System.out.println("Sua entrada é inválida. Digite um valor positivo.");
-	            scanner.nextLine();
-	            continue;
-	        }
-	        
-	        float valor = scanner.nextFloat();
-	        scanner.nextLine();
-	        return valor;
-	    }
+	public static void keyPress() {
+		try {
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+			System.in.read();
+		} catch (IOException e) {
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+		}
 	}
 }
