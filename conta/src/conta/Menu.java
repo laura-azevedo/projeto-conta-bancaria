@@ -75,7 +75,7 @@ public class Menu {
 			
 			switch (opcao) {
 			case 1:
-				System.out.println(Cores.TEXT_WHITE+"Criar Conta\n\n");
+				System.out.println(Cores.TEXT_BLUE +"Criar Conta\n\n");
 				System.out.println("Digite o número da agência: ");
 				agencia = sc.nextInt();
 				System.out.println("Digite o nome do titular: ");
@@ -105,13 +105,13 @@ public class Menu {
 				keyPress();
 				break;
 			case 2:
-				System.out.println(Cores.TEXT_WHITE+"Listar todas as Contas\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Listar todas as Contas\n\n");
 				contas.listarTodas();
 				keyPress();
 				break;
 				
 			case 3:
-				System.out.println(Cores.TEXT_WHITE+"Consultar dados da Conta - por número\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Consultar dados da Conta - por número\n\n");
 				System.out.println("Digite o número da conta: ");
 				numero = sc.nextInt();
 				contas.procurarPorNumero(numero);
@@ -119,7 +119,7 @@ public class Menu {
 				break;
 				
 			case 4:
-				System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n\n");
+				System.out.println(Cores.TEXT_BLUE + "Atualizar dados da Conta\n\n");
 				
 				System.out.println("Digite o número da conta: ");
 				numero = sc.nextInt();
@@ -161,22 +161,22 @@ public class Menu {
 				keyPress();
 				break;
 			case 5:
-				System.out.println(Cores.TEXT_WHITE+"Apagar a Conta\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Apagar a Conta\n\n");
 				System.out.println("Digite o número da conta: ");
 				numero = sc.nextInt();
 				contas.deletar(numero);
 				keyPress();
 				break;
 			case 6:
-				System.out.println(Cores.TEXT_WHITE+"Saque\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Saque\n\n");
 				keyPress();
 				break;
 			case 7:
-				System.out.println(Cores.TEXT_WHITE+"Depósito\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Depósito\n\n");
 				keyPress();
 				break;
 			case 8:
-				System.out.println(Cores.TEXT_WHITE+"Transferência entre Contas\n\n");
+				System.out.println(Cores.TEXT_BLUE+"Transferência entre Contas\n\n");
 				keyPress();
 				break;
 			default:
