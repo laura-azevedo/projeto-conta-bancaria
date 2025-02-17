@@ -16,8 +16,9 @@ public class ContaController implements ContaRepository {
 		
 		if (conta != null) {
 			conta.visualizar();
+		} else {
+			System.out.println("\nA Conta número: " + numero + " não foi encontrada!");	
 		}
-		System.out.println("\nA Conta número: " + numero + " não foi encontrada!");	
 	}
 
 	@Override
