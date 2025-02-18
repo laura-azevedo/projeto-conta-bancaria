@@ -18,9 +18,9 @@ public class Menu {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int opcao, numero, agencia, tipo, aniversario;
+		int opcao, numero, agencia, tipo, aniversario, numeroDestino;
 		String titular;
-		float saldo, limite;
+		float saldo, limite, valor;
 		
 		ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 100.0f);
 		contas.cadastrar(cc1);
@@ -169,6 +169,13 @@ public class Menu {
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_BLUE+"Saque\n\n");
+				System.out.println("Digite o número da conta: ");
+				numero = sc.nextInt();
+				do {
+					System.out.println("Digite o valor do saque: ");
+					valor = sc.nextFloat();
+				} while (valor <= 0);
+				contas.sacar(numero, valor);
 				keyPress();
 				break;
 			case 7:
