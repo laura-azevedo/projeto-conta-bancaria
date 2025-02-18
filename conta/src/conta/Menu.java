@@ -180,6 +180,13 @@ public class Menu {
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_BLUE+"Depósito\n\n");
+				System.out.println("Digite o número da conta: ");
+				numero = sc.nextInt();
+				do {
+					System.out.println("Digite o valor do depósito: ");
+					valor = sc.nextFloat();
+				} while (valor <= 0);
+				contas.depositar(numero, valor);
 				keyPress();
 				break;
 			case 8:

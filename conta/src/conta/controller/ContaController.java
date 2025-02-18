@@ -74,7 +74,14 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void depositar(int numero, float valor) {
-		// TODO Auto-generated method stub
+		var conta = buscarNaCollection(numero);
+		
+		if (conta != null) {
+			conta.depositar(valor);
+			System.out.println("\nO valor R$"+valor+" foi depositado na conta "+numero+" com sucesso. ");
+		} else {
+			System.out.println("\nA conta "+numero+" não foi encontrada ou a conta destino não é uma conta corrente.");
+		}
 		
 	}
 
